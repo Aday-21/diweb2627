@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://localhost</loc>
+		<loc>https://localhost/tema-03\Actividad1\</loc>
+		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>1</priority>
+	</url>
+	<url>
+		<loc>https://localhost/tema-03\Actividad1\index</loc>
 		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1</priority>
@@ -13,31 +19,7 @@
 		<priority>1</priority>
 	</url>
 	<url>
-		<loc>https://localhost/tema-03\Actividad1\</loc>
-		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
-		<changefreq>daily</changefreq>
-		<priority>1</priority>
-	</url>
-	<url>
 		<loc>https://localhost/tema-03\Actividad1\contacto</loc>
-		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
-		<changefreq>daily</changefreq>
-		<priority>1</priority>
-	</url>
-	<url>
-		<loc>https://localhost/tema-02\Actividad8\</loc>
-		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
-		<changefreq>daily</changefreq>
-		<priority>1</priority>
-	</url>
-	<url>
-		<loc>https://localhost/tema-02\Actividad9\</loc>
-		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
-		<changefreq>daily</changefreq>
-		<priority>1</priority>
-	</url>
-	<url>
-		<loc>https://localhost/tema-02\Actividad7\</loc>
 		<lastmod>2026-10-07-T13:47:59+02:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1</priority>
