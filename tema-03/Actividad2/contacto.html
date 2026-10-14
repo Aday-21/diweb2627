@@ -2,30 +2,409 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Contacto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontanería Experta | Servicios y Tienda</title>
+    <!-- Tailwind CSS para el diseño rápido y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1E3A8A', // Azul oscuro de confianza
+                        secondary: '#3B82F6', // Azul más claro para acentos
+                        light: '#F3F4F6', // Gris muy claro para fondos
+                        dark: '#1F2937', // Gris oscuro para textos
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para transiciones y utilidades adicionales */
+        html {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast {
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
+<body class="font-sans text-dark bg-light flex flex-col min-h-screen">
 
-<body>
+    <!-- Barra de Navegación -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                    <i class="fa-solid fa-droplet text-secondary text-2xl mr-2"></i>
+                    <span class="font-bold text-xl md:text-2xl text-primary tracking-tight">Fontanería Experta</span>
+                </div>
+                
+                <!-- Enlaces de navegación y Carrito -->
+                <div class="flex items-center space-x-4 md:space-x-8">
+                    <button onclick="navigate('home')" id="nav-home" class="nav-btn text-primary font-semibold hover:text-secondary transition border-b-2 border-primary py-2">
+                        Inicio
+                    </button>
+                    <button onclick="navigate('shop')" id="nav-shop" class="nav-btn text-gray-500 font-semibold hover:text-secondary transition border-b-2 border-transparent py-2">
+                        Tienda
+                    </button>
+                    
+                    <!-- Icono del Carrito -->
+                    <div class="relative cursor-pointer bg-light p-3 rounded-full hover:bg-gray-200 transition" title="Ver carrito (Demo)">
+                        <i class="fa-solid fa-cart-shopping text-dark text-lg"></i>
+                        <span id="cart-count" class="absolute top-0 right-0 -mt-1 -mr-1 flex justify-center items-center bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] shadow-sm">
+                            0
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <header>
-        <h1>Contacto</h1>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="flex-grow">
+        
+        <!-- ================= VISTA DE INICIO ================= -->
+        <div id="view-home" class="view-section block fade-in">
+            
+            <!-- Hero Section -->
+            <section class="relative bg-primary text-white">
+                <div class="absolute inset-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Fontanero trabajando" class="w-full h-full object-cover opacity-30">
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 flex flex-col items-center text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 shadow-sm">Soluciones rápidas y confiables</h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl">Expertos en todo tipo de instalaciones y reparaciones de fontanería. Servicio disponible 24/7 para urgencias.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="navigate('shop')" class="bg-secondary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1">
+                            Visitar Tienda
+                        </button>
+                        <a href="#servicios" class="bg-white text-primary font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1 hover:bg-gray-100">
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-        <nav>
-            <a href="sitemap.html">Mapa del Sitio</a>
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
-    </header>
+            <!-- Sección de Servicios -->
+            <section id="servicios" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nuestros Servicios Destacados</h2>
+                    <div class="w-24 h-1 bg-secondary mx-auto rounded"></div>
+                    <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Realizamos trabajos con los más altos estándares de calidad para asegurar la tranquilidad de tu hogar o negocio.</p>
+                </div>
 
-    <main>
-        <h2>Contacta con nosotros</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Tarjeta de Servicio 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <div class="h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1607472586893-edb57cb31322?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Reparación de fugas" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-secondary">
+                                <i class="fa-solid fa-wrench text-xl mr-2"></i>
+                                <h3 class="text-xl font-bold text-dark">Reparación de Fugas</h3>
+                            </div>
+                            <p class="text-gray-600 line-clamp-3">Detección y reparación de fugas de agua ocultas y visibles. Prevenimos daños estructurales y reducimos tu factura de agua con intervenciones precisas.</p>
+                        </div>
+                    </div>
 
-        <p>Email: tienda@zapatillas.com</p>
-        <p>Teléfono: 600 000 000</p>
+                    <!-- Tarjeta de Servicio 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <div class="h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instalación de sanitarios" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-secondary">
+                                <i class="fa-solid fa-bath text-xl mr-2"></i>
+                                <h3 class="text-xl font-bold text-dark">Instalación de Sanitarios</h3>
+                            </div>
+                            <p class="text-gray-600 line-clamp-3">Montaje e instalación profesional de inodoros, lavabos, duchas y bañeras. Actualizamos tu baño con los mejores materiales del mercado.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Servicio 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <div class="h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Desatascos urgentes" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-secondary">
+                                <i class="fa-solid fa-triangle-exclamation text-xl mr-2"></i>
+                                <h3 class="text-xl font-bold text-dark">Desatascos Urgentes</h3>
+                            </div>
+                            <p class="text-gray-600 line-clamp-3">Servicio de desatasco rápido para tuberías, desagües y alcantarillado. Disponemos de maquinaria especializada para resolver el problema al instante.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to action -->
+            <section class="bg-gray-100 py-16">
+                <div class="max-w-4xl mx-auto text-center px-4">
+                    <h2 class="text-3xl font-bold text-dark mb-4">¿Necesitas un profesional o material de fontanería?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Además de nuestros servicios, ofrecemos las mejores herramientas y repuestos en nuestra tienda online.</p>
+                    <button onclick="navigate('shop')" class="bg-primary hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-lg shadow transition">
+                        Ir a la Tienda de Productos
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= VISTA DE TIENDA ================= -->
+        <div id="view-shop" class="view-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Encabezado de tienda -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                    <div>
+                        <h2 class="text-3xl font-bold text-primary mb-2">Catálogo de Productos</h2>
+                        <p class="text-gray-600">Materiales y herramientas de calidad profesional.</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center bg-white p-2 rounded-lg shadow-sm border border-gray-200">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 ml-2"></i>
+                        <input type="text" placeholder="Buscar productos..." class="bg-transparent border-none focus:ring-0 px-3 py-1 outline-none w-full md:w-64">
+                    </div>
+                </div>
+
+                <!-- Contenedor dinámico de productos -->
+                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Los productos se inyectarán aquí mediante JavaScript -->
+                </div>
+
+            </div>
+        </div>
+
     </main>
-    <footer>
-        <p>&copy; 2026 Venta de Zapatos</p>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-300 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-droplet text-secondary text-xl mr-2"></i>
+                    <span class="font-bold text-xl text-white">Fontanería Experta</span>
+                </div>
+                <p class="text-sm text-gray-400">Tu aliado de confianza para reparaciones e instalaciones de fontanería, y tu proveedor de materiales profesionales.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contacto</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-phone mr-2 text-secondary"></i> +34 900 123 456</li>
+                    <li><i class="fa-solid fa-envelope mr-2 text-secondary"></i> info@fontaneriaexperta.com</li>
+                    <li><i class="fa-solid fa-location-dot mr-2 text-secondary"></i> Calle Principal 123, Ciudad</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Horario</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>Lunes a Viernes: 08:00 - 20:00</li>
+                    <li>Sábados: 09:00 - 14:00</li>
+                    <li class="text-secondary font-semibold">Servicio de Urgencias 24h</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-700 text-sm text-center">
+            &copy; <span id="current-year"></span> Fontanería Experta. Todos los derechos reservados.
+        </div>
     </footer>
+
+    <!-- Notificación Toast para el carrito -->
+    <div id="toast" class="toast fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center z-50">
+        <i class="fa-solid fa-check-circle mr-2 text-xl"></i>
+        <span id="toast-message">¡Producto añadido al carrito!</span>
+    </div>
+
+    <!-- Scripts de Lógica -->
+    <script>
+        // Establecer año actual en el footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Base de datos de productos simulada
+        const products = [
+            {
+                id: 1,
+                name: "Llave Inglesa Ajustable Pro",
+                price: 18.50,
+                image: "https://images.unsplash.com/photo-1530893608544-cf65f90378e9?auto=format&fit=crop&w=400&q=80",
+                category: "Herramientas"
+            },
+            {
+                id: 2,
+                name: "Tubo de PVC Rígido 50mm",
+                price: 4.95,
+                image: "https://images.unsplash.com/photo-1581575806655-b44c20ee307d?auto=format&fit=crop&w=400&q=80",
+                category: "Tuberías"
+            },
+            {
+                id: 3,
+                name: "Grifo de Lavabo Monomando",
+                price: 45.00,
+                image: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=400&q=80",
+                category: "Sanitarios"
+            },
+            {
+                id: 4,
+                name: "Cinta de Teflón (Pack 5)",
+                price: 3.50,
+                image: "https://images.unsplash.com/photo-1527814050087-379381547969?auto=format&fit=crop&w=400&q=80",
+                category: "Consumibles"
+            },
+            {
+                id: 5,
+                name: "Sellador de Silicona Baños",
+                price: 7.25,
+                image: "https://images.unsplash.com/photo-1616422285623-14bfedc9f957?auto=format&fit=crop&w=400&q=80",
+                category: "Químicos"
+            },
+            {
+                id: 6,
+                name: "Juego de Destornilladores",
+                price: 22.00,
+                image: "https://images.unsplash.com/photo-1586864387789-228f0166ce49?auto=format&fit=crop&w=400&q=80",
+                category: "Herramientas"
+            },
+            {
+                id: 7,
+                name: "Desatascador Manual",
+                price: 12.99,
+                image: "https://images.unsplash.com/photo-1590210214811-131742456e30?auto=format&fit=crop&w=400&q=80",
+                category: "Herramientas"
+            },
+            {
+                id: 8,
+                name: "Llave Grifa 14 Pulgadas",
+                price: 26.50,
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85164e?auto=format&fit=crop&w=400&q=80",
+                category: "Herramientas"
+            }
+        ];
+
+        // Renderizar productos en la tienda
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = ''; // Limpiar grid
+
+            products.forEach(product => {
+                const productHTML = `
+                    <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition">
+                        <div class="h-48 overflow-hidden relative">
+                            <span class="absolute top-2 left-2 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded opacity-80">${product.category}</span>
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="font-bold text-dark mb-1 h-12">${product.name}</h3>
+                            <div class="mt-auto">
+                                <p class="text-2xl font-bold text-primary mb-4">${product.price.toFixed(2)} €</p>
+                                <button onclick="addToCart(${product.id}, '${product.name.replace(/'/g, "\\'")}')" class="w-full bg-secondary hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition flex justify-center items-center">
+                                    <i class="fa-solid fa-cart-plus mr-2"></i> Añadir al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productHTML;
+            });
+        }
+
+        // --- LÓGICA DE NAVEGACIÓN ---
+        function navigate(targetView) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Mostrar la sección objetivo
+            document.getElementById(`view-${targetView}`).classList.remove('hidden');
+            
+            // Actualizar estado visual de los botones del menú
+            const navHome = document.getElementById('nav-home');
+            const navShop = document.getElementById('nav-shop');
+
+            if (targetView === 'home') {
+                navHome.classList.replace('text-gray-500', 'text-primary');
+                navHome.classList.replace('border-transparent', 'border-primary');
+                
+                navShop.classList.replace('text-primary', 'text-gray-500');
+                navShop.classList.replace('border-primary', 'border-transparent');
+                
+                window.scrollTo(0, 0); // Scroll al principio
+            } else if (targetView === 'shop') {
+                navShop.classList.replace('text-gray-500', 'text-primary');
+                navShop.classList.replace('border-transparent', 'border-primary');
+                
+                navHome.classList.replace('text-primary', 'text-gray-500');
+                navHome.classList.replace('border-primary', 'border-transparent');
+                
+                window.scrollTo(0, 0); // Scroll al principio
+            }
+        }
+
+        // --- LÓGICA DEL CARRITO ---
+        let cartTotalItems = 0;
+        let toastTimeout;
+
+        function addToCart(productId, productName) {
+            // Incrementar contador
+            cartTotalItems++;
+            
+            // Actualizar UI del badge
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.textContent = cartTotalItems;
+            
+            // Animación de "rebote" en el contador
+            cartBadge.classList.add('scale-125');
+            setTimeout(() => {
+                cartBadge.classList.remove('scale-125');
+            }, 200);
+
+            // Mostrar notificación Toast
+            showToast(`${productName} añadido al carrito.`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            
+            toastMsg.textContent = message;
+            toast.classList.add('show');
+            
+            // Limpiar timeout anterior si se hace clic rápido
+            if (toastTimeout) clearTimeout(toastTimeout);
+            
+            // Ocultar después de 3 segundos
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Inicialización al cargar la página
+        window.onload = () => {
+            renderProducts();
+        };
+    </script>
 </body>
 </html>
