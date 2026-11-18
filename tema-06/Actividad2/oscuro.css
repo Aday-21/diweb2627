@@ -1,0 +1,19 @@
+body {
+    background-color: #333333;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: lightblue;
+}
+
+h2 {
+    color: lightyellow;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+}
